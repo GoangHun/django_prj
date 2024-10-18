@@ -1,10 +1,11 @@
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from test_app.api import StudentList
+from test_app.api import StudentList, StudentDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/student_list', StudentList.as_view(), name='student_list')
+    # name은 url 대신 사용.
+    path('api/', include('test_app.urls')),
 ]
